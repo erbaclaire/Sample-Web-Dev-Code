@@ -2,6 +2,7 @@ body {
 	font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
 	margin: 0px auto;
 	width: 1440px;
+	color: rgb(34, 34, 34);
 }
 
 header {
@@ -89,14 +90,12 @@ a {
 
 hr {
 	border: none;
-	margin: 0px -99999px 0px -99999px;
 	border-bottom: 2px solid rgba(34, 34, 34, 0.15);
 }
 
 li {
 	font-weight: 300;
 	font-size: 14px;
-	color: rgb(34, 34, 34);
 	padding-bottom: 12px;
 	margin: 4px 12px 0px 0px;
 }
@@ -206,7 +205,6 @@ span {
 	display: flex;
 	margin-top: 30px;
 	padding: 12px 18px 12px 18px;
-	color: rgb(34, 34, 34);
 	text-align: center;
 	font-weight: 325;
 }
@@ -220,8 +218,22 @@ article {
 
 h4 {
 	display: inline;
-	padding: 3px 0px 0px 12px;
-	font-size: 16px;
+	padding: 0px 0px 0px 12px;
+	font-size: 17px;
 	font-weight: 325;
+	vertical-align: top;
+}
+
+.check-symbol {
+	color: rgb(229, 84, 0);
+	fill: rgb(229, 84, 0);
+	display: inline-block;
+	font-size: 24px;
+	font-weight:300;
+	height: 24px;
+	margin: 0px -8px 0px -8px;
+	text-align: center;
+	width:24px;
+	padding: 0px;
 }
 
