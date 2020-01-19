@@ -1,10 +1,68 @@
+<!-- 
+https://www.w3schools.com/howto/howto_css_searchbar.asp
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Etsy - Shop for handmade, vintage, custom, and unique gifts for everyone</title>
+    <link rel="stylesheet" href="etsy.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <p>Your Etsy clone goes here.</p>
+
+  	<header>
+  		<h1>Etsy</h1>
+  		<form>
+  			<input type="text" placeholder="Search for items or shops"><button type="submit"><i class="fa fa-search" style="font-size:24px; font-weight: 3;"></i></button>
+  		</form>
+
+  		<a id="sign-in" href="#">Sign in</a>
+  		<a id="cart" href="#"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+  	</header>
+
+  	<ul class="nav-bar">
+  		<li>Jewelry & Accessories</li>
+  		<li>Clothing & Shoes</li>
+  		<li>Home & Living</li>
+  		<li>Wedding & Party</li>
+  		<li>Toys & Entertainment</li>
+  		<li>Art & Collectibles</li>
+  		<li>Craft Supplies</a></li>
+  		<li>Vintage</li>
+  		<li><i class="fa fa-gift" style="font-size:17px; padding-right:2px"></i>Gifts</li>
+  	</ul>
+  	<hr>
+
+  	<h2>If it's handcrafted, vintage, custom, or unique, it's on Etsy.</h2>
+
+  	<div class="pic-section">
+  		<div id="pic-text-1">
+  			<h3>Shower your little ones with love.</h3>
+  			<p><a href="#">Shop Valentine's Day<span>&#x3e;</span></a></p>
+  		</div>
+  		<img id="girl-pic" src="etsy2.jpg">
+  		<div>
+  			<img id="bowl-pic" src="etsy3.jpg">
+  			<p id="pic-text-2"><a href="#">Ships for free? Yes!<span>&#x3e;</span></a></p>
+  		</div>
+  	</div>
+
+  	<div id="checks">
+  		<article>
+  			<span><i class="fa fa-check" aria-hidden="true" style="font-size: 25px; color: rgb(229, 84, 0); font-weight: 10;"></i><h4>Unique everything</h4></span>
+  			<p>We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).</p>
+  		</article>
+  		<article>
+  			<span><i class="fa fa-check" aria-hidden="true" style="font-size: 25px; color: rgb(229, 84, 0); font-weight: 10;"></i><h4>Independent sellers</h4></span>
+  			<p>Buy directly from someone who put their heart and soul into making something special.</p>
+  		</article>
+  		<article>
+    		<span><i class="fa fa-check" aria-hidden="true" style="font-size: 25px; color: rgb(229, 84, 0); font-weight: 10;"></i><h4>Secure shopping</h4></span>
+    		<p>We use best-in-class technology to protect your transactions.</p>
+    	</article>
+  	</div>
+
   </body>
 </html>

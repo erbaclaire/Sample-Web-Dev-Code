@@ -1,0 +1,221 @@
+body {
+	font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+	margin: 0px;
+}
+
+header {
+	padding: 12px 36px 12px 36px;
+	margin: 0px 20px 0px 20px;
+	display: flex;
+}
+
+h1 {
+	color: rgb(241, 100, 30);
+	padding-right: 10px;
+	font-family: "Times New Roman";
+	font-weight: 1;
+	font-size: 40px;
+	margin: 0px;
+}
+
+form {
+	padding-right: 18px;
+}
+
+input {
+	width: 957px;
+	height: 28px;
+	font-size: 16px;
+	padding: 9px 42px 9px 18px;
+	border: 1px 0px 1px 1px;
+	border-width: 1px 0px 1px 1px;
+	border-bottom-color: rgba(34, 34, 34, 0.15);
+	border-top-color: rgba(34, 34, 34, 0.15);
+	border-left-color: rgba(34, 34, 34, 0.15);
+	border-bottom-left-radius: 96px;
+	border-top-left-radius: 96px;
+	background-origin: padding-box;
+	background-color: rgba(34, 34, 34, 0.07);
+	font-weight: 400;
+}
+
+button {
+	width: 60px;
+	height: 48px;
+	font-size: 10px;
+	padding: 12px 21px 12px 15px;
+	border: 1px 1px 1px 0px;
+	border-left: none;
+	border-width: 1px;
+	border-bottom-color: rgba(34, 34, 34, 0.15);
+	border-top-color: rgba(34, 34, 34, 0.15);
+	border-right-color: rgba(34, 34, 34, 0.15);
+	border-bottom-right-radius: 96px;
+	border-top-right-radius: 96px;
+	background-origin: padding-box;
+	background-color: rgba(34, 34, 34, 0.07);
+	vertical-align: bottom;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+#sign-in {
+	padding: 17px 18px 9px 33px;
+	margin-right: 6px;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#cart {
+	font-size: 24px; 
+	font-weight: 3;
+	padding-top: 11px;
+}
+
+.nav-bar {
+	display: flex;
+	justify-content: center;
+	padding: 0px 18px 0px 18px;
+	margin: 0px 19px 0px 19px;
+	list-style-type: none;
+	justify-content: space-around;
+}
+
+hr {
+	border: none;
+	margin: 0px;
+	border-bottom: 2px solid rgba(34, 34, 34, 0.15);
+}
+
+li {
+	font-weight: 300;
+	font-size: 14px;
+	color: rgb(34, 34, 34);
+	padding-bottom: 12px;
+	margin: 4px 12px 0px 0px;
+}
+
+h2 {
+	font-weight: 200;
+	font-size: 33px;
+	padding: 30px 12px 12px 12px;
+	margin: 0px;
+	text-align: center;
+}
+
+.pic-section {
+	display: flex;
+	padding: 18px 18px 0px 36px;
+	margin: 0px 19px 0px 19px;
+	height: 320px;
+}
+
+#pic-text-1 {
+	margin: 0px;
+	background-color: rgb(248, 235, 230);
+	width: 260px;
+	padding: 18px;
+	text-align: center;
+	border-bottom-left-radius: 4px;
+	border-bottom-color: rgb(225, 227, 223);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-left-color: rgb(225, 227, 223);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-top-color: rgb(225, 227, 223);
+	border-top-left-radius: 4px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	box-sizing: border-box;
+	color: rgb(34, 34, 34);
+}
+
+h3 {
+	font-size: 25px;
+	font-weight: 200;
+	padding: 0px 18px 0px 18px;
+	margin-top: 40%;
+	margin-bottom: 15px;
+}
+
+p {
+	margin: 0px;
+	font-size: 15px;
+}
+
+span {
+	padding-left: 10px;
+	font-size: 11px;
+}
+
+#girl-pic {
+	width: 584.67px;
+	padding-right: 0px;
+	margin-right: 18px;
+	border-bottom-right-radius: 4px;
+	border-bottom-color: rgb(225, 227, 223);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-right-color: rgb(225, 227, 223);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(225, 227, 223);
+	border-top-right-radius: 4px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	box-sizing: border-box;
+}
+
+#bowl-pic {
+	width: 435.328px;
+	height: 220px;
+	margin-bottom: 18px;
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(225, 227, 223);
+}
+
+#pic-text-2 {
+	margin: 0px;
+	width: 435px;
+	height: 78px;
+	line-height: 70px;
+	background-color: rgb(248, 235, 230);
+	text-align: center;
+	border-radius: 4px;
+	border: 1px 1px 0px 1px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(225, 227, 223);
+	color: rgb(34, 34, 34);
+}
+
+#checks {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	padding: 12px 18px 12px 18px;
+	color: rgb(34, 34, 34);
+	text-align: center;
+	font-weight: 100;
+}
+
+article {
+	width: 340px;
+	padding: 0px 18px 0px 18px;
+	margin: 0px 45px 0px 45px;
+	line-height: 25px;
+}
+
+h4 {
+	display: inline;
+	padding: 3px 0px 0px 12px;
+	font-size: 16px;
+	font-weight: 150;
+}
+
