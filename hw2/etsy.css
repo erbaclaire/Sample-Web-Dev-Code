@@ -1,18 +1,20 @@
 body {
 	font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
-	margin: 0px;
+	margin: 0px auto;
+	width: 1440px;
 }
 
 header {
 	padding: 12px 36px 12px 36px;
 	margin: 0px 20px 0px 20px;
 	display: flex;
-	width: 1600px;
 }
 
 h1 {
+	width: 80px;
+	height: 40px;
 	color: rgb(241, 100, 30);
-	padding-right: 10px;
+	padding-right: 6px;
 	font-family: "Times New Roman";
 	font-weight: 1;
 	font-size: 40px;
@@ -89,6 +91,7 @@ hr {
 	border: none;
 	margin: 0px;
 	border-bottom: 2px solid rgba(34, 34, 34, 0.15);
+	width: 100%;
 }
 
 li {
@@ -101,7 +104,7 @@ li {
 
 h2 {
 	font-weight: 200;
-	font-size: 33px;
+	font-size: 30.75px;
 	padding: 30px 12px 12px 12px;
 	margin: 0px;
 	text-align: center;
@@ -109,8 +112,9 @@ h2 {
 
 .pic-section {
 	display: flex;
-	padding: 18px 18px 0px 36px;
-	margin: 0px 19px 0px 19px;
+	justify-content: right;
+	padding: 18px 0px 0px 36px;
+	margin: 0px 0px 0px 15px;
 	height: 320px;
 }
 
@@ -172,20 +176,21 @@ span {
 }
 
 #bowl-pic {
-	width: 435.328px;
+	width: 435px;
 	height: 220px;
 	margin-bottom: 18px;
 	border-radius: 4px;
 	border-width: 1px;
 	border-style: solid;
 	border-color: rgb(225, 227, 223);
+	display: block;
 }
 
 #pic-text-2 {
 	margin: 0px;
 	width: 435px;
 	height: 78px;
-	line-height: 70px;
+	line-height: 75px;
 	background-color: rgb(248, 235, 230);
 	text-align: center;
 	border-radius: 4px;
@@ -203,20 +208,19 @@ span {
 	padding: 12px 18px 12px 18px;
 	color: rgb(34, 34, 34);
 	text-align: center;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 article {
 	width: 340px;
-	padding: 0px 18px 0px 18px;
-	margin: 0px 45px 0px 45px;
-	line-height: 25px;
+	margin: 0px 46.65px 0px 46.672px;
+	line-height: 22px;
 }
 
 h4 {
 	display: inline;
 	padding: 3px 0px 0px 12px;
 	font-size: 16px;
-	font-weight: 150;
+	font-weight: 300;
 }
 
