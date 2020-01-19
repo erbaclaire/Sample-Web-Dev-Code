@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Graphik Webfont";
+  src: url(Graphik-Regular-Web.woff2);
+}
+
+@font-face {
+  font-family: "Graphik Webfont2";
+  src: url(Graphik-Medium-Web.woff2);
+}
+
+@font-face {
+  font-family: "Guardian-EgypTT";
+  src: url(Guardian-EgypTT-Light.woff2);
+}
+
 body {
 	font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
 	margin: 0px auto;
@@ -17,10 +32,10 @@ h1 {
 	height: 40px;
 	color: rgb(241, 100, 30);
 	padding-right: 6px;
-	font-family: "Times New Roman";
 	font-weight: 1;
 	font-size: 40px;
 	margin: 0px;
+	font-family: "Times New Roman";
 }
 
 form {
@@ -39,6 +54,7 @@ input {
 	width: 957px;
 	height: 28px;
 	font-size: 16px;
+	font-family: inherit;
 	padding: 9px 42px 9px 18px;
 	border-width: 1px 0px 1px 1px;
 	border-bottom-color: rgba(34, 34, 34, 0.15);
@@ -77,7 +93,8 @@ a {
 	padding: 17px 15px 9px 51px;
 	margin-right: 6px;
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: bold;
+	font-family: "Graphik Webfont2";
 }
 
 #cart {
@@ -102,15 +119,17 @@ hr {
 }
 
 li {
+	font-size: 13px;
 	font-weight: 300;
-	font-size: 14px;
 	padding-bottom: 12px;
 	margin: 4px 12px 0px 0px;
 }
 
 h2 {
-	font-weight: 200;
+	font-family: "Guardian-EgypTT",serif;
+    font-weight: 300;
 	font-size: 32px;
+	letter-spacing: 0.5px;
 	padding: 30px 12px 12px 12px;
 	margin: 0px;
 	text-align: center;
@@ -130,7 +149,6 @@ h2 {
 	width: 260px;
 	padding: 18px;
 	text-align: center;
-	font-weight: 500;
 	border-bottom-left-radius: 4px;
 	border-bottom-color: rgb(225, 227, 223);
 	border-bottom-style: solid;
@@ -147,16 +165,22 @@ h2 {
 }
 
 h3 {
-	font-size: 24px;
-	font-weight: 210;
-	padding: 0px 18px 0px 18px;
+	font-family: "Guardian-EgypTT",serif;
+	font-size: 28px;
+	font-weight: 50;
 	margin-top: 40%;
 	margin-bottom: 15px;
 }
 
-p {
+.pic-text-font {
+	font-family: "Graphik Webfont2";
 	margin: 0px;
 	font-size: 14px;
+}
+
+.arrow {
+	padding-left: 3px;
+	vertical-align: text-bottom;
 }
 
 span {
@@ -193,8 +217,7 @@ span {
 	display: block;
 }
 
-#pic-text-2 {
-	font-weight: 500;
+.pic-text-2 {
 	margin: 0px;
 	width: 435px;
 	height: 78px;
@@ -210,11 +233,11 @@ span {
 }
 
 #checks {
+	font-family: "Graphik Webfont";
 	display: flex;
 	margin-top: 30px;
 	padding: 12px 18px 12px 18px;
 	text-align: center;
-	font-weight: 325;
 }
 
 article {
@@ -222,16 +245,20 @@ article {
 	margin: 0px 46.65px 0px 46.672px;
 	padding-right: 18px;
 	line-height: 22px;
+	font-size: 14px;
 }
 
 h4 {
 	display: inline;
 	padding: 0px 0px 0px 12px;
-	font-size: 17px;
-	font-weight: 325;
+	font-size: 16px;
+	font-weight: 300;
 	vertical-align: top;
 }
 
+.check-p {
+	margin: 0px;
+}
 .check-symbol {
 	color: rgb(229, 84, 0);
 	fill: rgb(229, 84, 0);
