@@ -102,8 +102,8 @@ li {
 }
 
 h2 {
-	font-weight: 300;
-	font-size: 30px;
+	font-weight: 200;
+	font-size: 32px;
 	padding: 30px 12px 12px 12px;
 	margin: 0px;
 	text-align: center;
@@ -141,7 +141,7 @@ h2 {
 
 h3 {
 	font-size: 24px;
-	font-weight: 325;
+	font-weight: 210;
 	padding: 0px 18px 0px 18px;
 	margin-top: 40%;
 	margin-bottom: 15px;
@@ -149,7 +149,7 @@ h3 {
 
 p {
 	margin: 0px;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 span {
