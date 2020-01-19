@@ -3,6 +3,7 @@ body {
 	margin: 0px auto;
 	width: 1440px;
 	color: rgb(34, 34, 34);
+	overflow: hidden;
 }
 
 header {
@@ -23,15 +24,22 @@ h1 {
 }
 
 form {
-	padding-right: 18px;
+	display: inline;
+    box-shadow: 1px 2px 4px 0 rgba(34, 34, 34, 0.1) inset;
+	border-width: 1px;
+	border-bottom-color: rgba(34, 34, 34, 0.15);
+	border-top-color: rgba(34, 34, 34, 0.15);
+	border-right-color: rgba(34, 34, 34, 0.15);
+	border-left-color: rgba(34, 34, 34, 0.15);
+	border-radius: 96px;
 }
 
 input {
+	display: inline;
 	width: 957px;
 	height: 28px;
 	font-size: 16px;
 	padding: 9px 42px 9px 18px;
-	border: 1px 0px 1px 1px;
 	border-width: 1px 0px 1px 1px;
 	border-bottom-color: rgba(34, 34, 34, 0.15);
 	border-top-color: rgba(34, 34, 34, 0.15);
@@ -44,11 +52,11 @@ input {
 }
 
 button {
+	display: inline;
 	width: 60px;
 	height: 48px;
 	font-size: 10px;
 	padding: 12px 21px 12px 15px;
-	border: 1px 1px 1px 0px;
 	border-left: none;
 	border-width: 1px;
 	border-bottom-color: rgba(34, 34, 34, 0.15);
@@ -56,7 +64,6 @@ button {
 	border-right-color: rgba(34, 34, 34, 0.15);
 	border-bottom-right-radius: 96px;
 	border-top-right-radius: 96px;
-	background-origin: padding-box;
 	background-color: rgba(34, 34, 34, 0.07);
 	vertical-align: bottom;
 }
@@ -67,16 +74,16 @@ a {
 }
 
 #sign-in {
-	padding: 17px 18px 9px 33px;
+	padding: 17px 15px 9px 51px;
 	margin-right: 6px;
 	font-size: 13px;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 #cart {
 	font-size: 24px; 
 	font-weight: 3;
-	padding: 11px 0px 0px 3px;
+	padding: 11px 0px 0px 12px;
 }
 
 .nav-bar {
@@ -90,7 +97,7 @@ a {
 
 hr {
 	border: none;
-	margin: 0px auto 0px auto;
+	margin: 0px -1000px 0px -1000px;
 	border-bottom: 2px solid rgba(34, 34, 34, 0.15);
 }
 
