@@ -1,3 +1,4 @@
+/* import fonts */
 @font-face {
   font-family: "Graphik Webfont";
   src: url(Graphik-Regular-Web.woff2);
@@ -13,6 +14,7 @@
   src: url(Guardian-EgypTT-Light.woff2);
 }
 
+/* Desktop CSS */
 body {
 	font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
 	margin: 0px auto;
@@ -36,6 +38,10 @@ h1 {
 	font-size: 40px;
 	margin: 0px;
 	font-family: "Times New Roman";
+}
+
+.mobile-nav {
+	display: none;
 }
 
 form {
@@ -141,6 +147,10 @@ h2 {
 	padding: 18px 18px 0px 36px;
 	margin: 0px 15px 0px 15px;
 	height: 320px;
+}
+
+#pic-section-1 {
+	display: inline-flex;
 }
 
 #pic-text-1 {
@@ -259,6 +269,7 @@ h4 {
 .check-p {
 	margin: 0px;
 }
+
 .check-symbol {
 	color: rgb(229, 84, 0);
 	fill: rgb(229, 84, 0);
@@ -272,3 +283,116 @@ h4 {
 	padding: 0px;
 }
 
+/* mobile CSS */
+@media only screen and (max-width: 600px) {
+
+	body {
+		width: auto;
+	}
+
+	header {
+		flex-wrap: wrap;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	h1 {
+		padding: 2px 115px 2px 10px;
+		font-size: 30px;
+	}
+
+	.mobile-nav {
+		display: inline-flex;
+		order: 3;
+		padding: 20px 12px 0px 12px;
+	}
+
+	form {
+		order: 4;
+		margin: 10px 0px 15px 0px;
+	}
+
+	input {
+		width: 195px;
+	}
+
+	hr {
+		margin: 0px;
+		border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+	}
+
+	h2 {
+		padding: 15px 12px 18px 12px;
+		font-size: 24px;
+	}
+
+	.pic-section {
+		display: block;
+		padding: 0px 15px 0px 15px;
+		margin: 0px;
+		height: 320px;
+	}
+
+	#pic-section-1 {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	#pic-text-1 {
+		margin: 0px;
+		background-color: rgb(248, 235, 230);
+		width: 349px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom-color: rgb(225, 227, 223);
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-left-color: rgb(225, 227, 223);
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-right-color: rgb(225, 227, 223);
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top-left-radius: 0px;
+		box-sizing: border-box;
+		border-top: none;
+	}
+
+	#girl-pic {
+		width: 349px;
+		height: 300px;
+		margin: 0px;
+		border-top-right-radius: 4px;
+		border-top-color: rgb(225, 227, 223);
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-right-color: rgb(225, 227, 223);
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-left-color: rgb(225, 227, 223);
+		border-top-left-radius: 4px;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-bottom-right-radius: 0px;
+		box-sizing: border-box;
+	}
+
+	h3 {
+		font-family: "Guardian-EgypTT",serif;
+		font-size: 22px;
+		margin: 12px 10px 12px 10px;
+	}
+
+	#bowl-pic {
+		flex-direction: row;
+		width: 349px;
+		height: 150px;
+		margin: 0px;
+		margin-top: 15px;
+	}
+
+	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol {
+		display: none;
+	}
+
+}
