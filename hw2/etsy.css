@@ -1,3 +1,10 @@
+/* Sources:
+   1. @font-face https://www.w3schools.com/cssref/css3_pr_font-face_rule.asp
+   2. flex box tricks: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+   3. search bar: https://www.w3schools.com/howto/howto_css_searchbar.asp
+   4. examined CSS on Etsy.com to get specifications for padding, font size, colors, etc.
+*/
+
 /* import fonts */
 @font-face {
   font-family: "Graphik Webfont";
@@ -40,7 +47,7 @@ h1 {
 	font-family: "Times New Roman";
 }
 
-.mobile-nav {
+.break, .mobile-nav {
 	display: none;
 }
 
@@ -177,7 +184,7 @@ h2 {
 h3 {
 	font-family: "Guardian-EgypTT",serif;
 	font-size: 28px;
-	font-weight: 50;
+	font-weight: 1;
 	margin-top: 40%;
 	margin-bottom: 15px;
 }
@@ -287,33 +294,61 @@ h4 {
 @media only screen and (max-width: 600px) {
 
 	body {
-		width: auto;
+		width: 100%;
+		height: 100%;
+		margin: 0px auto;
 	}
 
 	header {
 		flex-wrap: wrap;
+		padding: 0px 8px 0px 12px;
 		margin: 0px;
-		padding: 0px;
 	}
 
 	h1 {
-		padding: 2px 115px 2px 10px;
-		font-size: 30px;
+		padding: 2px 0px 2px 0px;
+		font-size: 33px;
+		flex-grow: 2;
+		order: 1;
+	}
+
+	#sign-in {
+		padding: 17px 15px 9px 0px;	
+		order: 2;	
+	}
+
+	#cart {
+		padding-right: 18px;
+		order: 3;
+	}
+
+	.break {
+		display: inline;
+		order: 4;
+		flex-basis: 100%;
 	}
 
 	.mobile-nav {
-		display: inline-flex;
-		order: 3;
-		padding: 20px 12px 0px 12px;
+		display: inline;
+		order: 5;
+		margin: 20px 10px 0px 0px;
 	}
 
 	form {
-		order: 4;
-		margin: 10px 0px 15px 0px;
+		display: inline;
+		order: 6;
+		margin: 10px 0px 15px 6px;
+		flex-grow: 2;
 	}
 
 	input {
-		width: 195px;
+		padding-left: 6px;
+		padding-right: 0px;
+		width: 75%;
+	}
+
+	button {
+		width: 20%;
 	}
 
 	hr {
@@ -328,20 +363,18 @@ h4 {
 
 	.pic-section {
 		display: block;
-		padding: 0px 15px 0px 15px;
+		padding: 0px 10px 0px 10px;
 		margin: 0px;
-		height: 320px;
+		height: 600px;
 	}
 
 	#pic-section-1 {
-		display: flex;
 		flex-direction: column-reverse;
+		height: 72%;
 	}
 
 	#pic-text-1 {
-		margin: 0px;
 		background-color: rgb(248, 235, 230);
-		width: 349px;
 		border-bottom-left-radius: 4px;
 		border-bottom-right-radius: 4px;
 		border-bottom-color: rgb(225, 227, 223);
@@ -356,12 +389,13 @@ h4 {
 		border-top-left-radius: 0px;
 		box-sizing: border-box;
 		border-top: none;
+		width: 100%;
+		height: 31%;
 	}
 
 	#girl-pic {
-		width: 349px;
-		height: 300px;
-		margin: 0px;
+		flex-grow: 2;
+		width: 100%;
 		border-top-right-radius: 4px;
 		border-top-color: rgb(225, 227, 223);
 		border-top-style: solid;
@@ -385,10 +419,10 @@ h4 {
 
 	#bowl-pic {
 		flex-direction: row;
-		width: 349px;
+		width: 100%;
 		height: 150px;
 		margin: 0px;
-		margin-top: 15px;
+		margin: 15px 0px 10px 0px;
 	}
 
 	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol {

@@ -1,5 +1,6 @@
-<!-- 
-https://www.w3schools.com/howto/howto_css_searchbar.asp
+<!-- Sources:
+    1. Examined the CSS on Etsy.com to get the cart, arrow, magnifying glass, and mobile nav lines icons. Did this by taking their <svg> tags and pasting it in to a base64 program to get image. See, https://css-tricks.com/probably-dont-base64-svg/. 
+    2. Worked with Beth Pater and Paul Zimnoch.
 -->
 
 <!DOCTYPE html>
@@ -15,13 +16,14 @@ https://www.w3schools.com/howto/howto_css_searchbar.asp
   <body>
   	<header>
   		<h1>Etsy</h1>
+  		<a class="mobile-nav"><img width="24" height="24" class="figure" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0yMCw3SDRDMy40LDcsMyw2LjYsMyw2czAuNC0xLDEtMWgxNmMwLjYsMCwxLDAuNCwxLDFTMjAuNiw3LDIwLDd6Ij48L3BhdGg+PHBhdGggZD0iTTE1LjIsMTNINGMtMC42LDAtMS0wLjQtMS0xczAuNC0xLDEtMWgxMS4yYzAuNiwwLDEsMC40LDEsMVMxNS44LDEzLDE1LjIsMTN6Ij48L3BhdGg+PHBhdGggZD0iTTIwLDE5SDRjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMTZjMC42LDAsMSwwLjQsMSwxUzIwLjYsMTksMjAsMTl6Ij48L3BhdGg+PC9zdmc+"></a>
   		<form>
-  			<a class="mobile-nav"><img width="24" height="24" class="figure" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0yMCw3SDRDMy40LDcsMyw2LjYsMyw2czAuNC0xLDEtMWgxNmMwLjYsMCwxLDAuNCwxLDFTMjAuNiw3LDIwLDd6Ij48L3BhdGg+PHBhdGggZD0iTTE1LjIsMTNINGMtMC42LDAtMS0wLjQtMS0xczAuNC0xLDEtMWgxMS4yYzAuNiwwLDEsMC40LDEsMVMxNS44LDEzLDE1LjIsMTN6Ij48L3BhdGg+PHBhdGggZD0iTTIwLDE5SDRjLTAuNiwwLTEtMC40LTEtMXMwLjQtMSwxLTFoMTZjMC42LDAsMSwwLjQsMSwxUzIwLjYsMTksMjAsMTl6Ij48L3BhdGg+PC9zdmc+"></a>
   			<input type="text" placeholder="Search for items or shops"><button type="submit"><img width="24" height="24" class="figure" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0xMCwxOGE4LDgsMCwxLDEsOC04QTguMDA5LDguMDA5LDAsMCwxLDEwLDE4Wk0xMCw0YTYsNiwwLDEsMCw2LDZBNi4wMDcsNi4wMDcsMCwwLDAsMTAsNFoiPjwvcGF0aD48cGF0aCBkPSJNMjEsMjJhMSwxLDAsMCwxLS43MDctMC4yOTNsLTQtNGExLDEsMCwwLDEsMS40MTQtMS40MTRsNCw0QTEsMSwwLDAsMSwyMSwyMloiPjwvcGF0aD48L3N2Zz4=
 "></img></button>
   		</form>
   		<a id="sign-in" href="#">Sign in</a>
   		<a id="cart" href="#"><img width="24" height="24" class="figure" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxjaXJjbGUgY3g9IjkiIGN5PSIyMCIgcj0iMiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTYiIGN5PSIyMCIgcj0iMiI+PC9jaXJjbGU+PHBhdGggZD0iTTIxLDVINS42NjVMNC45NzgsMS43OUExLDEsMCwwLDAsNCwxSDFBMSwxLDAsMCwwLDEsM0gzLjE5MUw2LjAyMiwxNi4yMWEwLjk2MiwwLjk2MiwwLDAsMCwuMDY0LjE1OSwxLjAxNSwxLjAxNSwwLDAsMCwuMDYzLjE1NSwwLjk3OCwwLjk3OCwwLDAsMCwuMTMzLjE1MywxLjAwNiwxLjAwNiwwLDAsMCwuMDg4LjEsMSwxLDAsMCwwLC4xODUuMTA1LDAuOTc1LDAuOTc1LDAsMCwwLC4xMDcuMDZBMC45OTQsMC45OTQsMCwwLDAsNywxN0gxOGExLDEsMCwwLDAsLjk1OC0wLjcxM2wzLTEwQTEsMSwwLDAsMCwyMSw1Wm0tMi4yNDQsNUgxNlY3aDMuNjU2Wk03LjgxOSwxNWwtMC42LTNIOXYzSDcuODE5Wk0xMSwxMmgzdjNIMTFWMTJabTAtMlY3aDN2M0gxMVpNOSw3djNINi44Mkw2LjIyLDdIOVptOC4yNTYsOEgxNlYxMmgyLjE1NloiPjwvcGF0aD48L3N2Zz4="></img></a>
+  		<div class="break"></div>
   	</header>
 
   	<ul class="nav-bar">
