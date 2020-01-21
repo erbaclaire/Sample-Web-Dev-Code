@@ -337,7 +337,7 @@ h4 {
 	form {
 		display: inline;
 		order: 6;
-		margin: 10px 0px 15px 6px;
+		margin: 10px 0px 15px 0px;
 		flex-grow: 2;
 	}
 
