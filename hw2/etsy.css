@@ -47,7 +47,7 @@ h1 {
 	font-family: "Times New Roman";
 }
 
-.break, .mobile-nav {
+.break, .mobile-nav, #girl-pic-mobile {
 	display: none;
 }
 
@@ -394,7 +394,8 @@ h4 {
 		height: 31%;
 	}
 
-	#girl-pic {
+	#girl-pic-mobile {
+		display: inline-flex;
 		flex-grow: 2;
 		width: 100%;
 		border-top-right-radius: 4px;
@@ -405,6 +406,8 @@ h4 {
 		border-right-style: solid;
 		border-right-width: 1px;
 		border-left-color: rgb(225, 227, 223);
+		border-left-style: solid;
+		border-left-width: 1px;
 		border-top-left-radius: 4px;
 		border-top-style: solid;
 		border-top-width: 1px;
@@ -426,7 +429,7 @@ h4 {
 		margin: 15px 0px 10px 0px;
 	}
 
-	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol {
+	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol, #girl-pic {
 		display: none;
 	}
 
