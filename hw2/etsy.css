@@ -3,6 +3,7 @@
    2. flex box tricks: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
    3. search bar: https://www.w3schools.com/howto/howto_css_searchbar.asp
    4. examined CSS on Etsy.com to get specifications for padding, font size, colors, etc.
+   5. text over pic: https://www.w3schools.com/howto/howto_css_image_text.asp;
 */
 
 /* import fonts */
@@ -47,7 +48,7 @@ h1 {
 	font-family: "Times New Roman";
 }
 
-.break, .mobile-nav, #girl-pic-mobile {
+.break, .mobile-nav, #girl-pic-mobile, #bowl-pic-mobile {
 	display: none;
 }
 
@@ -190,9 +191,9 @@ h3 {
 }
 
 .pic-text-font {
-	font-family: "Graphik Webfont2";
 	margin: 0px;
-	font-size: 14px;
+	font-size: 13px;
+	font-weight: bold;
 }
 
 .arrow {
@@ -223,6 +224,10 @@ span {
 	box-sizing: border-box;
 }
 
+.bowl-pic-container {
+	position: relative;
+}
+
 #bowl-pic {
 	width: 435px;
 	height: 220px;
@@ -232,6 +237,18 @@ span {
 	border-style: solid;
 	border-color: rgb(225, 227, 223);
 	display: block;
+}
+
+.bowl-pic-text {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+}
+
+h5 {
+	font-size: 20px;
+	margin: 13px 0px 17px 0px;
+	font-weight: bolder;
 }
 
 .pic-text-2 {
@@ -417,10 +434,22 @@ h4 {
 	h3 {
 		font-family: "Guardian-EgypTT",serif;
 		font-size: 22px;
-		margin: 12px 10px 12px 10px;
+		margin: 5px 10px 12px 10px;
 	}
 
-	#bowl-pic {
+	.bowl-pic-text {
+		position: absolute;
+		top: 0px;
+		left: 10px;
+	}
+
+	h5 {
+		font-size: 15px;
+		margin: 10px 0px 10px 0px;
+	}
+
+	#bowl-pic-mobile {
+		display: block;
 		flex-direction: row;
 		width: 100%;
 		height: 150px;
@@ -428,7 +457,7 @@ h4 {
 		margin: 15px 0px 10px 0px;
 	}
 
-	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol, #girl-pic {
+	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol, #girl-pic, #bowl-pic {
 		display: none;
 	}
 
