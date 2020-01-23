@@ -191,6 +191,7 @@ h3 {
 }
 
 .pic-text-font {
+	font-family: "Graphik Webfont2";
 	margin: 0px;
 	font-size: 13px;
 	font-weight: bold;
@@ -246,6 +247,7 @@ span {
 }
 
 h5 {
+	font-family: "Graphik Webfont2";
 	font-size: 20px;
 	margin: 13px 0px 17px 0px;
 	font-weight: bolder;
