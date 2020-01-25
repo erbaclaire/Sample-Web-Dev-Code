@@ -48,7 +48,7 @@ h1 {
 	font-family: "Times New Roman";
 }
 
-.break, .mobile-nav, #girl-pic-mobile, #bowl-pic-mobile {
+.break, .mobile-nav, #girl-pic-mobile {
 	display: none;
 }
 
@@ -141,7 +141,7 @@ li {
 
 h2 {
 	font-family: "Guardian-EgypTT",serif;
-    font-weight: 300;
+    font-weight: 100;
 	font-size: 32px;
 	letter-spacing: 1px;
 	padding: 30px 12px 12px 12px;
@@ -183,22 +183,25 @@ h2 {
 }
 
 h3 {
-	font-family: "Guardian-EgypTT",serif;
+	font-family: "Guardian-EgypTT", serif;
 	font-size: 28px;
 	font-weight: 300;
 	margin-top: 40%;
 	margin-bottom: 15px;
+	line-height: 35px;
 }
 
 .pic-text-font {
+	font-family: "Graphik Webfont2";
 	margin: 0px;
 	font-size: 13px;
-	font-weight: bold;
+	color: rgb(0, 0, 0);
 }
 
 .arrow {
 	padding-left: 3px;
 	vertical-align: text-bottom;
+	color: rgb(0, 0, 0);
 }
 
 span {
@@ -271,7 +274,7 @@ h5 {
 	font-family: "Graphik Webfont";
 	display: flex;
 	margin-top: 30px;
-	padding: 12px 18px 12px 45px;
+	padding: 12px 0px 12px 25px;
 	text-align: center;
 }
 
@@ -436,6 +439,7 @@ h4 {
 		font-family: "Guardian-EgypTT",serif;
 		font-size: 22px;
 		margin: 5px 10px 12px 10px;
+		line-height: 28px;
 	}
 
 	.bowl-pic-text {
@@ -445,11 +449,11 @@ h4 {
 	}
 
 	h5 {
-		font-size: 15px;
+		font-size: 16px;
 		margin: 10px 0px 10px 0px;
 	}
 
-	#bowl-pic-mobile {
+	#bowl-pic {
 		display: block;
 		flex-direction: row;
 		width: 100%;
@@ -458,7 +462,7 @@ h4 {
 		margin: 15px 0px 10px 0px;
 	}
 
-	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol, #girl-pic, #bowl-pic {
+	.nav-bar, li, #checks, .pic-text-2, article, h4, .check-p, check-symbol, #girl-pic {
 		display: none;
 	}
 
