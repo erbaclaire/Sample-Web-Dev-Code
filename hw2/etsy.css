@@ -28,7 +28,8 @@ body {
 	margin: 0px auto;
 	width: 1440px;
 	color: rgb(34, 34, 34);
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 header {
@@ -54,7 +55,7 @@ h1 {
 
 form {
 	display: inline;
-    box-shadow: 1px 2px 4px 0 rgba(34, 34, 34, 0.1) inset;
+    	box-shadow: 1px 2px 4px 0 rgba(34, 34, 34, 0.1) inset;
 	border-width: 1px;
 	border-bottom-color: rgba(34, 34, 34, 0.15);
 	border-top-color: rgba(34, 34, 34, 0.15);
