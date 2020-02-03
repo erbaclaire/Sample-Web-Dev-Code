@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Homework #3: Bike Stations</title>
+    <style>
+      .fave {
+        padding-right: 1em;
+        cursor: pointer;
+        color:red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+
+      <div class="row">
+        <div class="col">
+          <h1>Divvy Stations</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col mr-4">
+
+          <p>Area:
+            <select>
+
+            </select>
+          </p>
+
+          <div class="row">
+            <div class="col">
+              <table id="stations" class="table table-striped border">
+                <thead>
+                  <tr><th colspan="2">Station Name</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="loop"><td><span class="fave">&#9825;</span></td><td>Buckingham Fountain</td></tr>
+                  <tr class="loop"><td><span class="fave">&#9825;</span></td><td>Shedd Aquarium</td></tr>
+                  <tr class="loop"><td><span class="fave">&#9825;</span></td><td>Burnham Harbor</td></tr>
+                  <tr class="loop"><td><span class="fave">&#9825;</span></td><td>Michigan Ave & Washington St</td>
+                  <tr class="uchicago"><td><span class="fave">&#9825;</span></td><td>Harper Ave & 59th St</td></tr>
+                  <tr class="uchicago"><td><span class="fave">&#9825;</span></td><td>Museum of Science and Industry</td></tr>
+                  <tr class="uchicago"><td><span class="fave">&#9825;</span></td><td>Ellis Ave & 60th St</td></tr>
+                  <tr class="north"><td><span class="fave">&#9825;</span></td><td>Clark St & Armitage Ave</td></tr>
+                  <tr class="north"><td><span class="fave">&#9825;</span></td><td>Broadway and Argyle St</td></tr>
+                  <tr class="north"><td><span class="fave">&#9825;</span></td><td>Sheffield Ave & Waveland Ave</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col">
+              <table id="favorites" class="table table-bordered">
+                <thead>
+                  <tr><th>My Favorite Stations</th> </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
