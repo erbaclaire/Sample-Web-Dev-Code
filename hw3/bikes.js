@@ -8,7 +8,7 @@
 function filterStations(e) {
 	e.preventDefault()
 	console.log(e)
-	const stations = document.querySelectorAll("#stations tr")
+	const stations = document.querySelectorAll("#stations tbody tr")
 	for (station of stations) {
 		if (station.className === this.value || this.value === "all") {
 			station.style.display = "block"
