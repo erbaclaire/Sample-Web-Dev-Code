@@ -11,7 +11,7 @@ function filterStations(e) {
 	const stations = document.querySelectorAll("#stations tbody tr")
 	for (station of stations) {
 		if (station.className === this.value || this.value === "all") {
-			station.style.display = "block"
+			station.style.display = ""
 		} else { 
 			station.style.display = "none"
 		}
