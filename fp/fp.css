@@ -1,0 +1,25 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial;
+	align-content: center;
+}
+
+.bg {
+	background-image: url('https://cdn.aarp.net/content/dam/aarp/money/investing/2020/01/1140-bull-and-bear-illustration-with-stock-chart.jpg');	
+  	height: 100%; 
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	color: white;
+}
+
+@media only screen and (max-width: 720px) {
+	body, html {
+		font-size: 9px;
+	}
+	
+	.bg {
+		height: 50%;
+	}
+}

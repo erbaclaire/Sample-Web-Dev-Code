@@ -2,61 +2,86 @@
 <html lang="en">
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="fp.css">
     <title>Final Project: Stock Portfolio Management</title>
   </head>
 
-  <body class="text-center">
-    <div class="container">
-      <h1 class="mb-5">Welcome Back to Your Stock Portfolio!</h1>
-      <h3>Buy Stock</h3>
-      <form id="purchase-stock">
-        <div class="form-group row">
-          <div class="col-3">
-            <label for="symbol">Symbol</label>
-            <input type="text" class="form-control" id="symbol" name="sym" placeholder="e.g., IBM, MSFT, AMZN" required>
-          </div>
-          <div class="col-3">
-            <label for="pps">Price per Share ($)</label>
-            <input type="number" class="form-control" id="pps" name="price" readonly>
-          </div>
-          <div class="col-3">
-            <label for="shares">Shares</label>
-            <input type="number" class="form-control" id="shares" name="units" placeholder="No. of Shares" min=1 required>
-          </div>
-          <div class="col-3">
-            <label for="pps">Total Cost($)</label>
-            <input type="number" class="form-control" id="total" name="tot" readonly>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Purchase Shares</button>
-      </form>
+  <body>
 
-      <div class="row mt-5">
-        <div class="col">
-          <h3 class="text-center">Your Stock Portfolio</h3>
-          <table id="stocks" class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Symbol</th> 
-                <th>No. of Shares</th>
-                <th>Current Price per Share ($)</th> 
-                <th>Total Value ($)</th> 
-                <th>Initial Value ($)</th>
-                <th>Profit/Loss ($)</th>
-                <th>Sell</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <a href="https://iexcloud.io">Data provided by IEX Cloud</a>
+  	<div class="bg">
+  		<div class="ml-3">
+	  		<h1 class="pt-5">The Bull and Bear</h1>
+	  		<p class="ml-1">Trading Made Simple.</p>
+	  		<a href="#buy" id="test" class="btn btn-primary mt-5" role="button">Purchase Shares</a>
+	  		<a href="#portfolio" class="btn btn-primary mt-5 ml-3" role="button">Review Portfolio and Sell</a>
+	  	</div>
+	</div>
+	<hr>
+
+	<div class="container text-center mt-3" id="buy">
+	    <form id="purchase-stock">
+	        <div class="form-group row">
+	          <div class="col-3">
+	            <label for="symbol">Symbol</label>
+	            <input type="text" class="form-control" id="symbol" name="sym" placeholder="e.g., IBM, MSFT, AMZN" onfocus="this.value=''" required>
+	          </div>
+	          <div class="col-3">
+	            <label for="pps">Price per Share ($)</label>
+	            <input type="number" class="form-control" id="pps" name="price" readonly>
+	          </div>
+	          <div class="col-3">
+	            <label for="shares">Shares</label>
+	            <input type="number" class="form-control" id="shares" name="units" placeholder="No. of Shares" min=1 onfocus="this.value=''" required>
+	          </div>
+	          <div class="col-3">
+	            <label for="pps">Total Cost($)</label>
+	            <input type="number" class="form-control" id="total" name="tot" readonly>
+	          </div>
+	        </div>
+	        <button type="submit" class="btn btn-primary mt-3 mb-3">Purchase Shares</button>
+	        <p class="text-danger">Warning: The price per share shown is the price at the moment you enter the stock symbol. The price will update automatically and charge the price per share at the time you press "Purchase Shares." This should not be more than a few cents differential between what is shown and what you pay (if anything at all). This prevents users from waiting until the price is much higher and then the site charging what is shown in the price per share input box. That would be arbitrage and is illegal.</p>
+	    </form>
+	</div>
+	<hr>
+
+	<div class="container text-center mt-2" id="portfolio">
+		<div class="row mt-3">
+		    <div class="col">
+		      <div class="card">
+  				<div class="card-header bg-success">
+  					<h4>Portfolio Overview</h4>
+  				</div>
+ 				<div class="card-body">
+			    	<h5 class="card-title">Your current portfolio value is: $<span id="portfolio-value"></span></h5>
+			    	<h5 class="card-title">Your current portfolio net profit is: <span id="net-profit"></span></h5>
+			    	<h5 class="card-title">Your sold-shares net profit is: <span id="net-profit"></span></h5>
+			    	<p class="card-text">Current portfolio net profit is the profit from your shares currently in your portfolio but not yet sold. Sold-shares profit are profits from shares you have sold. These are "realized" profits in that these profits have been deposited in to your bank account.</p> 
+  				</div>
+			  </div>
+		      <table id="stocks" class="table table-bordered mt-3">
+		        <thead class="bg-light">
+		          <tr>
+		            <th>Symbol</th> 
+		            <th>No. of Shares</th>
+		            <th>Current Price per Share ($)</th> 
+		            <th>Total Value ($)</th> 
+		            <th>Initial Value ($)</th>
+		            <th>Profit/Loss ($)</th>
+		            <th>Sell</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		        </tbody>
+		      </table>
+		    </div>
+		</div>
+		<a class="pt-5" href="https://iexcloud.io">Data provided by IEX Cloud</a>
+	</div>
+
+	<!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
