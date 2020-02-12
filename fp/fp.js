@@ -246,8 +246,4 @@ function sellForms() {
 	}
 }
 
-// sorting table
-$(document).ready(function () {
-$('#dtBasicExample').DataTable();
-$('.dataTables_length').addClass('bs-select');
-})
+// sort table
