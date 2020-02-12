@@ -19,7 +19,7 @@ function calculatePortfolioValue() {
 }
 
 // function for adding stock to a portfolio or loading stocks
-async function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag) {
+function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag) {
 	let stocks = document.querySelector("#stocks tbody");
 	let newRow = document.createElement("tr");
 	newRow.setAttribute("id", symbolValue);
@@ -38,8 +38,14 @@ async function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag)
 
 	// current price
 	let newCol3 = document.createElement("td");
-	let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
-	let data = await http_response.json();
+	var request = new XMLHttpRequest();
+	request.open("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6", false)
+	request.send(null)
+	if (request.status === 200) {
+  		data = JSON.parse(request.responseText);
+	}
+	// let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
+	// let data = await http_response.json();
 	let pps= document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice).toFixed(2));	
 	newCol3.appendChild(pps);
 	newRow.appendChild(newCol3);	
@@ -72,7 +78,7 @@ async function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag)
 	let newForm = document.createElement("form");
 	newForm.setAttribute("id", "sell" + symbolValue);
 	let newDiv = document.createElement("div");
-	newDiv.setAttribute("class", "form-group row");
+	newDiv.setAttribute("class", "form-group row m-0");
 	let newDiv2 = document.createElement("div");
 	newDiv2.setAttribute("class", "col-7");
 	let newInput = document.createElement("input");
@@ -87,7 +93,7 @@ async function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag)
 	newDiv3.setAttribute("class", "col-5");
 	let newButton = document.createElement("button");
 	newButton.setAttribute("type", "submit");
-	newButton.setAttribute("class", "btn btn-primary");
+	newButton.setAttribute("class", "btn btn-outline-success");
 	newButton.innerHTML = "Sell";
 	newDiv3.appendChild(newButton);
 	newDiv.appendChild(newDiv3);
@@ -103,10 +109,8 @@ async function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag)
 	}
 }
 
-// load user's stock portfolio when pages loads
-function loadStockPortfolio(e) {
-	e.preventDefault();
-	console.log(e);
+// load user's stock portfolio when page loads
+function loadStockPortfolio() {
 	// render the stock portfolio
 	for (var i = 0; i < localStorage.length; i++) {
 		if (i === localStorage.length - 1) {
@@ -119,7 +123,11 @@ function loadStockPortfolio(e) {
 	    renderPortfolio(key, value[0], value[1], lastFlag) 
 	}	
 }
-document.addEventListener("DOMContentLoaded", loadStockPortfolio);
+window.addEventListener("load", function() {
+	loadStockPortfolio();
+	// call function to add event listener to rows of stock portfolio
+	sellForms();
+})
 
 // when user types in stock symbol, fill in price
 async function logPrice(e) {
@@ -128,13 +136,12 @@ async function logPrice(e) {
   	const symbolValue = document.querySelector("#symbol").value;
 	let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
 	let data = await http_response.json();
-	console.log(data);
 	let pps = document.querySelector("#pps");
 	pps.value = data[symbolValue].quote.latestPrice
 }
-document.addEventListener("input", logPrice);
+document.querySelector("#symbol").addEventListener("input", logPrice);
 
-// when user enters the shares they want, fill in the total
+// when user enters the shares they want, fill in the total cost
 function logTotal(e) {
 	e.preventDefault();
 	console.log(e);
@@ -143,7 +150,7 @@ function logTotal(e) {
   	const pps = document.querySelector("#pps");
   	totalCost.value = pps.value*sharesValue
 }
-document.addEventListener("input", logTotal);
+document.querySelector("#shares").addEventListener("input", logTotal);
 
 // purchase stock and add it to the stock portfolio
 function buyStock(e) {
@@ -203,11 +210,44 @@ function buyStock(e) {
 		// update data that needs to be preserved - symbol, shares, and initial value - to local storage
 		var portfolioData = [newShares, newInitial];
 		localStorage.setItem(symbolValue, JSON.stringify(portfolioData));
-
-		// recalculate total value and net profit
-		calculatePortfolioValue() 
 	}
+	location.reload();
+	return false;
 }
 document.querySelector("#purchase-stock").addEventListener("submit", buyStock);
 
-// sell shares
+// sell stock and remove from portfolio
+async function sellStock(e) {
+	e.preventDefault();
+
+	const sharesValue = document.querySelector("#" + this.id + " input").value;
+	const rowToUpdate = this.parentElement.parentElement;
+	console.log(rowToUpdate)
+	const symbolValue = rowToUpdate.querySelector(":first-child").innerHTML;
+	const oldShares = parseInt(rowToUpdate.querySelector(":nth-child(2)").innerHTML);
+	const oldInitial = parseFloat(rowToUpdate.querySelector(":nth-child(5)").innerHTML);
+	let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
+	let data = await http_response.json();
+	const soldAmt = data[symbolValue].quote.latestPrice*sharesValue;
+
+	if (oldShares-sharesValue === 0) {
+		localStorage.removeItem(symbolValue);	
+	} else {
+		var portfolioData = [oldShares-sharesValue, oldInitial - (oldInitial/oldShares)*sharesValue];
+		localStorage.setItem(symbolValue, JSON.stringify(portfolioData));
+	}
+	location.reload();
+	return false;
+}
+function sellForms() {
+	rows = document.querySelectorAll("td form");
+	for (row of rows) {
+		row.addEventListener("submit", sellStock)
+	}
+}
+
+// sorting table
+$(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+})
