@@ -7,7 +7,7 @@ body, html {
 
 .bg {
 	background-image: url('https://cdn.aarp.net/content/dam/aarp/money/investing/2020/01/1140-bull-and-bear-illustration-with-stock-chart.jpg');	
-  	height: 75%; 
+  	height: 100%; 
   	background-position: center;
   	background-repeat: no-repeat;
   	background-size: cover;
