@@ -40,8 +40,13 @@ body, html {
 		display: none; 
 	}
 
+	/* decrease size of table font, input, and button */
 	table tbody tr td .form-control {
 		width: 40px;
+	}
+
+	table {
+		font-size: 7px;
 	}
 
 }
