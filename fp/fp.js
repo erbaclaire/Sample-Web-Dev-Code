@@ -19,109 +19,56 @@ function calculatePortfolioValue() {
 }
 
 // function for adding stock to a portfolio or loading stocks
-function renderPortfolio(symbolValue, sharesValue, initialValue, lastFlag) {
-	let stocks = document.querySelector("#stocks tbody");
-	let newRow = document.createElement("tr");
-	newRow.setAttribute("id", symbolValue);
-
-	// symbol
-	let newCol = document.createElement("td");
-	let sym = document.createTextNode(symbolValue);
-	newCol.appendChild(sym);
-	newRow.appendChild(newCol);
-
-	// shares
-	let newCol2 = document.createElement("td");
-	let shares = document.createTextNode(sharesValue);
-	newCol2.appendChild(shares);
-	newRow.appendChild(newCol2);
-
-	// current price
-	let newCol3 = document.createElement("td");
+function renderPortfolio(symbolValue, sharesValue, initialValue) {
 	var request = new XMLHttpRequest();
+	// query API
 	request.open("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6", false)
 	request.send(null)
 	if (request.status === 200) {
   		data = JSON.parse(request.responseText);
 	}
-	// let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
-	// let data = await http_response.json();
-	let pps= document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice).toFixed(2));	
-	newCol3.appendChild(pps);
-	newRow.appendChild(newCol3);	
-
-	// total value
-	let newCol4 = document.createElement("td");
-	let total = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice*sharesValue).toFixed(2));	
-	newCol4.appendChild(total);
-	newRow.appendChild(newCol4);
-
-	// initial value
-	let newCol5 = document.createElement("td");
-	let initial = document.createTextNode(parseFloat(initialValue).toFixed(2));	
-	newCol5.appendChild(initial);
-	newRow.appendChild(newCol5);
-
-	// profit/loss
-	let newCol6 = document.createElement("td");
-	let pl = document.createTextNode(parseFloat((data[symbolValue].quote.latestPrice*sharesValue) - initialValue).toFixed(2));
-	newCol6.appendChild(pl);
+	// determine if profit should be negative or positive
 	if (((data[symbolValue].quote.latestPrice*sharesValue) - initialValue) < 0) {
-		newCol6.style.color = "red";
+		color = "red";
 	} else {
-		newCol6.style.color = "green";
+		color = "green";
 	}
-	newRow.appendChild(newCol6);
-
-	// sell button - can only sell up to as much as they have
-	let newCol7 = document.createElement("td");
-	let newForm = document.createElement("form");
-	newForm.setAttribute("id", "sell" + symbolValue);
-	let newDiv = document.createElement("div");
-	newDiv.setAttribute("class", "form-group row m-0");
-	let newDiv2 = document.createElement("div");
-	newDiv2.setAttribute("class", "col-7");
-	let newInput = document.createElement("input");
-	newInput.setAttribute("type", "number");
-	newInput.setAttribute("class", "form-control");
-	newInput.setAttribute("placeholder", "Shares");
-	newInput.setAttribute("max", sharesValue);
-	newInput.setAttribute("min", 1);
-	newDiv2.appendChild(newInput);
-	newDiv.appendChild(newDiv2);
-	let newDiv3 = document.createElement("div");
-	newDiv3.setAttribute("class", "col-5");
-	let newButton = document.createElement("button");
-	newButton.setAttribute("type", "submit");
-	newButton.setAttribute("class", "btn btn-outline-success");
-	newButton.innerHTML = "Sell";
-	newDiv3.appendChild(newButton);
-	newDiv.appendChild(newDiv3);
-	newForm.appendChild(newDiv);
-	newCol7.appendChild(newForm);
-	newRow.appendChild(newCol7);
-
-	stocks.appendChild(newRow);	
-
-	// calculate total value and net profit of portfolio
-	if (lastFlag === 1) {
-		calculatePortfolioValue();
-	}
+	// return html of new row
+	return `<tr id=${symbolValue}>
+				<td>${symbolValue}</td>
+				<td>${sharesValue}</td>
+				<td>${parseFloat(data[symbolValue].quote.latestPrice).toFixed(2)}</td>
+				<td>${parseFloat(data[symbolValue].quote.latestPrice*sharesValue).toFixed(2)}</td>
+				<td>${parseFloat(initialValue).toFixed(2)}</td>
+				<td style="color:${color};">${parseFloat((data[symbolValue].quote.latestPrice*sharesValue) - initialValue).toFixed(2)}</td>
+				<td>
+					<form id="sell"${symbolValue}>
+						<div class="form-group row m-0">
+							<div class="col-7">
+								<input type="number" class="form-control" placeholder="Shares" max=${sharesValue} min=1>
+							</div>
+							<div class="col-5">
+								<button type="submit" class="btn btn-outline-success">Sell</button>
+							</div>
+						</div>
+					</form>
+				</td>
+			</tr>`;
 }
 
 // load user's stock portfolio when page loads
 function loadStockPortfolio() {
-	// render the stock portfolio
+	// render stock portfolio on page
+	let htmlForPortfolio = "";
 	for (var i = 0; i < localStorage.length; i++) {
-		if (i === localStorage.length - 1) {
-			var lastFlag = 1
-		} else {
-			var lastFlag = 0
-		}
-	    var key   = localStorage.key(i);
+	    var key = localStorage.key(i);
 	    var value = JSON.parse(localStorage.getItem(key));
-	    renderPortfolio(key, value[0], value[1], lastFlag) 
+	    htmlForPortfolio += renderPortfolio(key, value[0], value[1]) 
 	}	
+	let stocks = document.querySelector("#stocks tbody");
+	stocks.innerHTML = htmlForPortfolio;
+	// calculate total portfolio value
+	calculatePortfolioValue();
 }
 window.addEventListener("load", function() {
 	loadStockPortfolio();
@@ -172,7 +119,7 @@ function buyStock(e) {
 	
 	// if some of stock is not already purchased, then add everything
 	if (alreadyInPortfolio === 0) {
-		renderPortfolio(symbolValue, sharesValue, initialValue, 1);
+		renderPortfolio(symbolValue, sharesValue, initialValue);
 
 		// update data that needs to be preserved - symbol, shares, and initial value - to local storage
 		var portfolioData = [sharesValue, initialValue];
@@ -247,3 +194,23 @@ function sellForms() {
 }
 
 // sort table
+$('th').click(function(){
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+    this.asc = !this.asc
+    if (!this.asc) {
+    	rows = rows.reverse()
+    }
+    for (var i = 0; i < rows.length; i++) {
+    	table.append(rows[i])
+    }
+})
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+    }
+}
+function getCellValue(row, index) { 
+	return $(row).children('td').eq(index).text() 
+}
