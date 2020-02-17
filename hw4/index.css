@@ -1,3 +1,4 @@
-.bg {
+.outlined {
+	-webkit-text-stroke: 1px black; 
 	color: white;
 }

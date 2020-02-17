@@ -1,3 +1,7 @@
+// Sources: 
+// 1. sorting: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+// 2. reloading page: https://www.w3schools.com/jsref/met_loc_reload.asp
+
 // function to calculate portfolio value
 function calculatePortfolioValue() {
 	let portfolioValue = document.querySelector("#portfolio-value");

@@ -11,17 +11,24 @@
 
   <body>
   	<div class="text-center">
-  		<div style="-webkit-text-stroke: 1px black; color: white;">
-        <h1>Asteroids Near Earth in the Next Week</h1>
-        <div class="pt-3">
-	  		 <h2>See below for a list of asteroids passing by Earth in the next seven days. On a given day, asteroids are sorted by the ones that NASA deem to be the most dangerous and then by those passing closest to the Earth. Note, also, the size of the asteroid, as those over 0.2 miles could cause catastrophic damage. These asteroids are highlighted, even if they are not passing close to the Earth and NASA does not deem them a threat, because a slight change in trajectory could doom the Earth! Might not be a bad thing to just start from scratch, though. That's why I'm asking for donations for Meteor 2020. Meteor can get it done!</h2>
-	  	</div>
-	</div>
+      <h1 class="outlined">Asteroids Near Earth in the Next Week</h1>
+      <div class="mt-3 mb-5">
+        <h5 class="mt-5 outlined">Click on the buttons below to see the asteroids that NASA deem to be potentially hazerdous!</h5>
+        <a id="mostHazerdousByDate" class="btn btn-primary" href="#">NASA's Weekly Potentially Hazerdous by Date</a>
+        <a id="mostHazerdousByDiameter" class="btn btn-primary" href="#">NASA's Weekly Potentially Hazerdous by Max Diameter</a>
+        <a id="mostHazerdousByDistance" class="btn btn-primary" href="#">NASA's Weekly Potentially Hazerdous by Miss Distance</a>
+        <div id="WMHCards">
+        </div>
+      </div>
+	  	<h5 class="mt-5 outlined">See below for all asteroids passing by Earth in the next week by date. You can also click on a date button to navigate to that day on the screen. On a given day, asteroids are sorted by the ones that NASA deem to be the most dangerous and then by those passing closest to the Earth. Note, also, the size of the asteroid, as those over 0.2 miles could cause catastrophic damage. These asteroids are highlighted, even if they are not passing close to the Earth and NASA does not deem them a threat, because a slight change in trajectory could doom the Earth! Might not be a bad thing to just start from scratch, though. That's why I'm asking for donations for Meteor 2020. Meteor can get it done!</h5>
+      <div id="navigators">
+      </div>
+	   </div>
 
-	<div id="asteroids">
-	</div>
+  	<div id="asteroids">
+  	</div>
 
-	<!-- Scripts -->
+	   <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
