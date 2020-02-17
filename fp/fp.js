@@ -42,10 +42,10 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 				<td>${parseFloat(initialValue).toFixed(2)}</td>
 				<td style="color:${color};">${parseFloat((data[symbolValue].quote.latestPrice*sharesValue) - initialValue).toFixed(2)}</td>
 				<td>
-					<form id="sell"${symbolValue}>
+					<form id=sell${symbolValue}>
 						<div class="form-group row m-0">
 							<div class="col-7">
-								<input type="number" class="form-control" placeholder="Shares" max=${sharesValue} min=1>
+								<input type="number" class="form-control" placeholder="No." max=${sharesValue} min=1>
 							</div>
 							<div class="col-5">
 								<button type="submit" class="btn btn-outline-success">Sell</button>
@@ -194,23 +194,60 @@ function sellForms() {
 }
 
 // sort table
-$('th').click(function(){
-    var table = $(this).parents('table').eq(0)
-    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
-    this.asc = !this.asc
-    if (!this.asc) {
-    	rows = rows.reverse()
-    }
-    for (var i = 0; i < rows.length; i++) {
-    	table.append(rows[i])
-    }
-})
-function comparer(index) {
-    return function(a, b) {
-        var valA = getCellValue(a, index), valB = getCellValue(b, index)
-        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
-    }
+function sort(column, asc, numeric) {
+	return function() {
+		let tbody = document.querySelector("#stocks tbody");
+		let rows = document.querySelectorAll("#stocks tbody tr");
+		var rowsArray = [];
+		for (row of rows) {
+			rowsArray.push(row);
+		}
+		tbody.innerHTML = "";
+		if (asc === 1) {
+			var newOrder = sortByAsc(rowsArray, column, numeric);
+		} else {
+			var newOrder = sortByDesc(rowsArray, column, numeric);
+		}
+		newOrder.forEach((row) => {
+			tbody.appendChild(row);
+		})
+	}
 }
-function getCellValue(row, index) { 
-	return $(row).children('td').eq(index).text() 
+function sortByAsc(rowsArray, column, numeric) {
+	return rowsArray.sort((a, b) => {
+		if (numeric === 1) {
+			aCompare = parseFloat(a.querySelector(":nth-child(" + column + ")").innerHTML);
+			bCompare = parseFloat(b.querySelector(":nth-child(" + column + ")").innerHTML);
+		} else {
+			aCompare = a.querySelector(":nth-child(" + column + ")").innerHTML;
+			bCompare = b.querySelector(":nth-child(" + column + ")").innerHTML;			
+		}
+		if (aCompare < bCompare) return -1;
+		if (aCompare > bCompare) return 1;
+	})
 }
+function sortByDesc(rowsArray, column, numeric) {
+	return newArray = rowsArray.sort((a, b) => {
+		if (numeric === 1) {
+			aCompare = parseFloat(a.querySelector(":nth-child(" + column + ")").innerHTML);
+			bCompare = parseFloat(b.querySelector(":nth-child(" + column + ")").innerHTML);
+		} else {
+			aCompare = a.querySelector(":nth-child(" + column + ")").innerHTML;
+			bCompare = b.querySelector(":nth-child(" + column + ")").innerHTML;			
+		}
+		if (aCompare > bCompare) return -1;
+		if (aCompare < bCompare) return 1;
+	})
+}
+document.querySelector("#symbolAsc").addEventListener("click", sort(1, 1, 0));
+document.querySelector("#symbolDesc").addEventListener("click", sort(1, 0, 0));
+document.querySelector("#sharesAsc").addEventListener("click", sort(2, 1, 1));
+document.querySelector("#sharesDesc").addEventListener("click", sort(2, 0, 1));
+document.querySelector("#ppsAsc").addEventListener("click", sort(3, 1, 1));
+document.querySelector("#ppsDesc").addEventListener("click", sort(3, 0, 1));
+document.querySelector("#totalAsc").addEventListener("click", sort(4, 1, 1));
+document.querySelector("#totalDesc").addEventListener("click", sort(4, 0, 1));
+document.querySelector("#initialAsc").addEventListener("click", sort(5, 1, 1));
+document.querySelector("#initialDesc").addEventListener("click", sort(5, 0, 1));
+document.querySelector("#plAsc").addEventListener("click", sort(6, 1, 1));
+document.querySelector("#plDesc").addEventListener("click", sort(6, 0, 1));

@@ -41,7 +41,7 @@ function renderAsteroid(name, dangerous, maxDiameter, missDistance) {
 }
 
 function renderAsteroids(date, asteroids){
-	let htmlCode = `<div><h1 class="text-center mb-3 mt-3 mr-1 ml-1 bg-dark border w-300">${date}</h1></div><div class="row text-center">`
+	let htmlCode = `<div class="pt-3"><h3 class="text-center mb-3 mt-3 mr-1 ml-1 bg-dark text-light border">${date}</h3></div><div class="row text-center">`
 	asteroids.sort(function(a, b) {
 		if (a.is_potentially_hazardous_asteroid > b.is_potentially_hazardous_asteroid) return -1;
 		if (a.is_potentially_hazardous_asteroid < b.is_potentially_hazardous_asteroid) return 1;
@@ -51,7 +51,7 @@ function renderAsteroids(date, asteroids){
 	asteroids.forEach(asteroid => {
 	 	htmlCode += renderAsteroid(asteroid.name, asteroid.is_potentially_hazardous_asteroid, asteroid.estimated_diameter.miles.estimated_diameter_max, asteroid.close_approach_data[0].miss_distance.miles);
 	})
-	return htmlCode += `</div><hr>`;
+	return htmlCode += `</div>`;
 }
 
 function listAsteroids() {
