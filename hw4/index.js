@@ -20,7 +20,7 @@ function getURL() {
 	const base = "https://api.nasa.gov/neo/rest/v1/feed?";
 	var today = new Date();
 	let startDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-	const apiKey = "ThEWyjBBPDnDKV2CVSqO4gRU3qjBlpkMJo06rwo8";
+	const apiKey = "T9rcvcNgW9QZ5xvfe0repFLEiUOZBVAuQQna53lS";
 	return base + "start_date=" + startDate + "&api_key=" + apiKey;
 }
 
@@ -110,10 +110,10 @@ function renderMostHazerdous(property) {
 		weeklyHazerdousHTML += `<div class="col-2">
 	  								<div class="card m-1">
 				  						<div class="card-body bg-light text-dark" style="height: 20rem;">
-				    						<h5 class="card-title"><b>Asteroid:</b> ${asteroid.name}</h5>
-				    						<p class="card-title"><b>Close Pass Date:</b> ${asteroid.close_approach_data[0].close_approach_date_full}</p>
-				     						<p class="card-text"><b>Maximum Diameter:</b>${parseFloat(asteroid.estimated_diameter.miles.estimated_diameter_max).toFixed(2)} mi</p>
-				    						<p class="card-text"><b>Miss Distance from Earth:</b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].miss_distance.miles).toFixed(2))} mi</p>
+				    						<h5 class="card-title"><b>Asteroid: </b> ${asteroid.name}</h5>
+				    						<p class="card-title"><b>Close Pass Date: </b> ${asteroid.close_approach_data[0].close_approach_date_full}</p>
+				     						<p class="card-text"><b>Maximum Diameter: </b>${parseFloat(asteroid.estimated_diameter.miles.estimated_diameter_max).toFixed(2)} mi</p>
+				    						<p class="card-text"><b>Miss Distance from Earth: </b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].miss_distance.miles).toFixed(2))} mi</p>
 				  						</div>
 				  					</div>
 								</div>`
