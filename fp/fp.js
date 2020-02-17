@@ -25,60 +25,104 @@ function calculatePortfolioValue() {
 
 // function for adding stock to a portfolio or loading stocks
 function renderPortfolio(symbolValue, sharesValue, initialValue) {
-	var request = new XMLHttpRequest();
-	// query API
-	request.open("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6", false)
-	request.send(null)
-	if (request.status === 200) {
-  		data = JSON.parse(request.responseText);
-	}
-	// determine if profit should be negative or positive
-	if (((data[symbolValue].quote.latestPrice*sharesValue) - initialValue) < 0) {
-		color = "red";
-	} else {
-		color = "green";
-	}
-	// return html of new row
-	return `<tr id=${symbolValue}>
-				<td>${symbolValue}</td>
-				<td>${sharesValue}</td>
-				<td>${parseFloat(data[symbolValue].quote.latestPrice).toFixed(2)}</td>
-				<td>${parseFloat(data[symbolValue].quote.latestPrice*sharesValue).toFixed(2)}</td>
-				<td>${parseFloat(initialValue).toFixed(2)}</td>
-				<td style="color:${color};">${parseFloat((data[symbolValue].quote.latestPrice*sharesValue) - initialValue).toFixed(2)}</td>
-				<td>
-					<form id=sell${symbolValue}>
-						<div class="form-group row m-0">
-							<div class="col-7">
-								<input type="number" class="form-control" placeholder="No." max=${sharesValue} min=1>
-							</div>
-							<div class="col-5">
-								<button type="submit" class="btn btn-outline-success">Sell</button>
-							</div>
-						</div>
-					</form>
-				</td>
-			</tr>`;
+	fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6").then(response => response.json()).then(data => {
+		if (((data[symbolValue].quote.latestPrice*sharesValue) - initialValue) < 0) {
+			color = "red";
+		} else {
+			color = "green";
+		}
+		let row = document.createElement("tr");	
+		row.setAttribute("id", symbolValue);
+
+		// symbol
+		let col1 = document.createElement("td");
+		let col1Text = document.createTextNode(symbolValue);
+		col1.appendChild(col1Text);
+		row.appendChild(col1);
+
+		// shares
+		let col2 = document.createElement("td");
+		let col2Text = document.createTextNode(sharesValue);
+		col2.appendChild(col2Text);
+		row.appendChild(col2);	
+
+		// pps
+		let col3 = document.createElement("td");
+		let col3Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice).toFixed(2));
+		col3.appendChild(col3Text);
+		row.appendChild(col3);
+
+		// total
+		let col4 = document.createElement("td");
+		let col4Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice*sharesValue).toFixed(2));
+		col4.appendChild(col4Text);
+		row.appendChild(col4);
+
+		// initial
+		let col5 = document.createElement("td");
+		let col5Text = document.createTextNode(parseFloat(initialValue).toFixed(2));
+		col5.appendChild(col5Text);
+		row.appendChild(col5);
+
+		// pl
+		let col6 = document.createElement("td");
+		col6.style.color = color;
+		let col6Text = document.createTextNode(parseFloat((data[symbolValue].quote.latestPrice*sharesValue) - initialValue).toFixed(2));
+		col6.appendChild(col6Text);
+		row.appendChild(col6);
+
+		// sell
+		let col7 = document.createElement("td");
+		let form = document.createElement("form");
+		form.setAttribute("id", "sell" + symbolValue);
+		let div1 = document.createElement("div");
+		div1.setAttribute("class", "form-group row m-0");
+		let div2 = document.createElement("div");
+		div2.setAttribute("class", "col-7");
+		let input = document.createElement("input");
+		input.setAttribute("type", "number");
+		input.setAttribute("class", "form-control");
+		input.setAttribute("placeholder", "No.");
+		input.setAttribute("max", sharesValue);
+		input.setAttribute("min", 1);
+		div2.appendChild(input);
+		div1.appendChild(div2);
+		let div3 = document.createElement("div");
+		div3.setAttribute("class", "col-3");
+		let button = document.createElement("button");
+		button.setAttribute("type", "submit");
+		button.setAttribute("class", "btn btn-outline-success");
+		let buttonText = document.createTextNode("Sell")
+		button.appendChild(buttonText);
+		div3.appendChild(button);
+		div1.appendChild(div3);
+		form.appendChild(div1);
+		col7.appendChild(form);
+		row.appendChild(col7);
+
+		let tbody = document.querySelector("tbody");
+		tbody.appendChild(row);	
+
+		// call function to add event listener to rows of stock portfolio
+		sellForm("#sell" + symbolValue);
+
+		// calculate total if last
+		calculatePortfolioValue(); 
+	})
 }
 
 // load user's stock portfolio when page loads
 function loadStockPortfolio() {
 	// render stock portfolio on page
-	let htmlForPortfolio = "";
 	for (var i = 0; i < localStorage.length; i++) {
 	    var key = localStorage.key(i);
 	    var value = JSON.parse(localStorage.getItem(key));
-	    htmlForPortfolio += renderPortfolio(key, value[0], value[1]) 
+	    if (i === localStorage.length - 1) { var last = 1; } else { var last = 0; }
+	    renderPortfolio(key, value[0], value[1], last) 
 	}	
-	let stocks = document.querySelector("#stocks tbody");
-	stocks.innerHTML = htmlForPortfolio;
-	// calculate total portfolio value
-	calculatePortfolioValue();
 }
 window.addEventListener("load", function() {
 	loadStockPortfolio();
-	// call function to add event listener to rows of stock portfolio
-	sellForms();
 })
 
 // when user types in stock symbol, fill in price
@@ -124,7 +168,7 @@ function buyStock(e) {
 	
 	// if some of stock is not already purchased, then add everything
 	if (alreadyInPortfolio === 0) {
-		renderPortfolio(symbolValue, sharesValue, initialValue);
+		renderPortfolio(symbolValue, sharesValue, initialValue, 1);
 
 		// update data that needs to be preserved - symbol, shares, and initial value - to local storage
 		var portfolioData = [sharesValue, initialValue];
@@ -191,11 +235,8 @@ async function sellStock(e) {
 	location.reload();
 	return false;
 }
-function sellForms() {
-	rows = document.querySelectorAll("td form");
-	for (row of rows) {
-		row.addEventListener("submit", sellStock)
-	}
+function sellForm(id) {
+	document.querySelector(id).addEventListener("submit", sellStock);
 }
 
 // sort table

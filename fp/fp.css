@@ -12,6 +12,12 @@ body, html {
   	background-repeat: no-repeat;
   	background-size: cover;
   	color: white;
+  	font-size: 90px;
+  	-webkit-text-stroke: 1px black; 
+}
+
+.sub {
+	font-size: 50px;
 }
 
 @media only screen and (max-width: 720px) {
@@ -21,6 +27,11 @@ body, html {
 	
 	.bg {
 		height: 50%;
+		font-size: 36px;
+	}
+
+	.sub {
+		font-size: 20px;
 	}
 
 	/* hide initial value and profit and loss on mobile so not too crowded */
