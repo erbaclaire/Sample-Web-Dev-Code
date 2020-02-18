@@ -1,7 +1,7 @@
 // Sources: 
 // 1. sorting: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 // 2. reloading page: https://www.w3schools.com/jsref/met_loc_reload.asp
-// 3. synchronous requests: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests
+// 3. general HTML and javascript: https://developer.mozilla.org/en-US/ 
 
 // function to calculate portfolio value
 function calculatePortfolioValue() {
