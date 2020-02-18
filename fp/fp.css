@@ -12,6 +12,9 @@ body, html {
   	background-repeat: no-repeat;
   	background-size: cover;
   	color: white;
+}
+
+.header {
   	font-size: 90px;
   	-webkit-text-stroke: 1px black; 
 }
