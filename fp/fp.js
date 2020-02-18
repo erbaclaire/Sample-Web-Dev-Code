@@ -2,6 +2,7 @@
 // 1. sorting: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 // 2. reloading page: https://www.w3schools.com/jsref/met_loc_reload.asp
 // 3. general HTML and javascript: https://developer.mozilla.org/en-US/ 
+// 4. local storage: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
 // function to calculate portfolio value
 function calculatePortfolioValue() {
