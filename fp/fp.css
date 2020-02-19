@@ -16,7 +16,6 @@ body, html {
 
 .header {
   	font-size: 90px;
-  	-webkit-text-stroke: 1px black; 
 }
 
 .sub {
@@ -31,6 +30,10 @@ body, html {
 	.bg {
 		height: 50%;
 		font-size: 36px;
+	}
+
+	.header {
+	  	font-size: 30px;
 	}
 
 	.sub {
