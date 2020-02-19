@@ -1,0 +1,48 @@
+Final Project
+20 points
+
+DUE: Thursday, March 12 by 5:30pm
+
+This assignment is intended as a full summary of everything you've learned in this course. Some research might be required.
+
+For easiest viewing of these instructions, view online on Github.com or use a Markdown previewer.
+
+Requirements
+Please read these carefully.
+
+Your final project must be in a folder named fp.
+Please replace this README file with your own that provides:
+The command(s) I should run in the fp directory to start your application
+Anything else you'd like me to know about your application
+Project Description
+Your goal is to build a simple stock portfolio management application as a web-based SPA (single-page app).
+
+You are responsible for designing the entire user interface. It does not need to be complicated. It should offer a clean design, be easy to use, and work on most mobile devices.
+
+You can use React, jQuery, pure JavaScript, or anything in between.
+
+You can use Bootstrap, another CSS framework, pure CSS, or anything in between.
+
+Somewhat miraculously, IEX Group offers a free API to get near-real time stock quotes and information, historical data, and more. You can use this API as your primary source of data.
+
+Your application should let the user perform the following tasks:
+
+Add to their stock portfolio by providing:
+Stock symbol (IBM, MSFT, AMZN, etc.)
+Number of shares purchased
+The user should be able to see their current portfolio at a glance, including the symbol, number of shares, current market price per share, and total value (number of shares multiplied by current market price).
+The user should be able to sort the portfolio by symbol, number of shares, or stock value; and in either ascending or descending order (i.e. clicking the same column twice should toggle the sort order).
+The user should be able to sell (substract) shares of a stock
+The user should see their total portfolio value (the sum of all stock values).
+The user should be able to close the site and then reopen it, and all data should be preserved. Your application should persist the portfolio data using HTML5 Local Storage or some kind of cloud-based storage (i.e. Firebase, AirTable, etc). This is the primary research item for this project, and will test how well you've "learned how to learn" web development topics on your own.
+
+Grading Rubric
+20 points total
+
+15 points for functionality
+5 pts: Buy and sell shares
+5 pts: Display sortable portfolio, including total portfolio value
+5 pts: Persist portfolio data
+5 points for design
+3 pts: Clear, usable design
+2 pts: Mobile layout on typical mobile phone resolutions
