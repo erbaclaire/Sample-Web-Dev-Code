@@ -23,8 +23,11 @@ function getURL() {
 	const base = "https://api.nasa.gov/neo/rest/v1/feed?";
 	var today = new Date();
 	let startDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	let endWeek = new Date();
+	endWeek.setDate(endWeek.getDate() + 6);
+	let endDate = endWeek.getFullYear()+'-'+(endWeek.getMonth()+1)+'-'+endWeek.getDate();
 	const apiKey = "T9rcvcNgW9QZ5xvfe0repFLEiUOZBVAuQQna53lS";
-	return base + "start_date=" + startDate + "&api_key=" + apiKey;
+	return base + "start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + apiKey;
 }
 
 function renderAsteroid(name, time, dangerous, maxDiameter, missDistance) {
