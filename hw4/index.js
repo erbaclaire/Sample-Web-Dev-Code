@@ -30,7 +30,7 @@ function getURL() {
 	return base + "start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + apiKey;
 }
 
-function renderAsteroid(name, time, dangerous, maxDiameter, missDistance) {
+function renderAsteroid(name, time, dangerous, maxDiameter, missDistance, velocity) {
 	if (dangerous === true) {
 		var highlight = "text-dark bg-warning";
 	} else {
@@ -41,6 +41,11 @@ function renderAsteroid(name, time, dangerous, maxDiameter, missDistance) {
 	} else {
 		var highlight2 = "";
 	}
+	if (velocity > 40000) {
+		var highlight3 = "text-dark bg-warning";
+	} else {
+		var highlight3 = "";
+	}
   	return `<div class="col-4">
   				<div class="card m-1">
 			  		<div class="card-body bg-dark text-white">
@@ -48,6 +53,7 @@ function renderAsteroid(name, time, dangerous, maxDiameter, missDistance) {
 			    		<p class="card-text"><b>Time Asteroid Passes Earth:</b> ${time}</p>
 			    		<p class="card-text"><b>Potentially Hazerdous:</b> ${dangerous}</p>
 			     		<p class="card-text"><b>Maximum Diameter:</b> <span class="` + highlight2 + `">${parseFloat(maxDiameter).toFixed(2)} mi</span></p>
+			     		<p class="card-text"><b>Relative Velocity:</b> <span class="` + highlight3 + `">${formatNumber(parseFloat(velocity).toFixed(2))} mi/hr</span></p>
 			    		<p class="card-text"><b>Miss Distance from Earth:</b> ${formatNumber(parseFloat(missDistance).toFixed(2))} mi</p>
 			  		</div>
 			  	</div>
@@ -64,7 +70,7 @@ function renderAsteroids(date, asteroids){
 	})
 	asteroids.forEach(asteroid => {
 		if (asteroid.is_potentially_hazardous_asteroid === true) { weeklyHazerdous.push(asteroid) }
-	 	htmlCode += renderAsteroid(asteroid.name, asteroid.close_approach_data[0].close_approach_date_full, asteroid.is_potentially_hazardous_asteroid, asteroid.estimated_diameter.miles.estimated_diameter_max, asteroid.close_approach_data[0].miss_distance.miles);
+	 	htmlCode += renderAsteroid(asteroid.name, asteroid.close_approach_data[0].close_approach_date_full, asteroid.is_potentially_hazardous_asteroid, asteroid.estimated_diameter.miles.estimated_diameter_max, asteroid.close_approach_data[0].miss_distance.miles, asteroid.close_approach_data[0].relative_velocity.miles_per_hour);
 	})
 	return htmlCode += `</div>`;
 }
@@ -106,12 +112,19 @@ function sortByDistance(array) {
 			if (parseFloat(a.close_approach_data[0].miss_distance.miles) > parseFloat(b.close_approach_data[0].miss_distance.miles)) return 1;
 		})
 }
+function sortByVelocity(array) {
+	return array.sort((a, b) => {
+			if (parseFloat(a.close_approach_data[0].relative_velocity.miles_per_hour) > parseFloat(b.close_approach_data[0].relative_velocity.miles_per_hour)) return -1;
+			if (parseFloat(a.close_approach_data[0].relative_velocity.miles_per_hour) < parseFloat(b.close_approach_data[0].relative_velocity.miles_per_hour)) return 1;
+		})
+}
 function renderMostHazerdous(property) {
 	return function() {
 		weeklyHazerdousHTML = "<div class='mt-5 row'>";
 		if (property === "date") { var newArray = sortByDate(weeklyHazerdous); }
 		if (property === "diameter") { var newArray = sortByDiameter(weeklyHazerdous); }
 		if (property === "distance") { var newArray = sortByDistance(weeklyHazerdous); }
+		if (property === "velocity") { var newArray = sortByVelocity(weeklyHazerdous); }
 		newArray.forEach(asteroid => {
 		weeklyHazerdousHTML += `<div class="col-2">
 	  								<div class="card m-1">
@@ -119,6 +132,7 @@ function renderMostHazerdous(property) {
 				    						<h5 class="card-title"><b>Asteroid: </b> ${asteroid.name}</h5>
 				    						<p class="card-title"><b>Close Pass Date: </b> ${asteroid.close_approach_data[0].close_approach_date_full}</p>
 				     						<p class="card-text"><b>Maximum Diameter: </b>${parseFloat(asteroid.estimated_diameter.miles.estimated_diameter_max).toFixed(2)} mi</p>
+				    						<p class="card-text"><b>Relative Velocity:</b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].relative_velocity.miles_per_hour).toFixed(2))} mi/hr</p>
 				    						<p class="card-text"><b>Miss Distance from Earth: </b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].miss_distance.miles).toFixed(2))} mi</p>
 				  						</div>
 				  					</div>
@@ -131,4 +145,5 @@ function renderMostHazerdous(property) {
 document.querySelector("#mostHazerdousByDate").addEventListener("click", renderMostHazerdous("date"));
 document.querySelector("#mostHazerdousByDiameter").addEventListener("click", renderMostHazerdous("diameter"));
 document.querySelector("#mostHazerdousByDistance").addEventListener("click", renderMostHazerdous("distance"));
+document.querySelector("#mostHazerdousByVelocity").addEventListener("click", renderMostHazerdous("velocity"));
 
