@@ -10,8 +10,10 @@ function formatNumber(num) {
 // render APOD background
 function renderAPOD() {
 	fetch("https://api.nasa.gov/planetary/apod?api_key=T9rcvcNgW9QZ5xvfe0repFLEiUOZBVAuQQna53lS").then(response => response.json()).then(data => {
-		console.log(data.explanation)
 		document.body.style.backgroundImage = "url('" + data.url + "')";
+		document.body.style.backgroundRepeat = "no-repeat";
+		document.body.style.backgroundAttachment = "fixed";
+		document.body.style.backgroundSize = "100%";
 		let explain = document.querySelector("#desc");
 		explain.innerHTML = data.explanation;
 	})
