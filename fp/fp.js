@@ -79,7 +79,7 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 		let div1 = document.createElement("div");
 		div1.setAttribute("class", "form-group row m-0");
 		let div2 = document.createElement("div");
-		div2.setAttribute("class", "col-7");
+		div2.setAttribute("class", "col-7 p-0");
 		let input = document.createElement("input");
 		input.setAttribute("type", "number");
 		input.setAttribute("class", "form-control");
@@ -89,7 +89,7 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 		div2.appendChild(input);
 		div1.appendChild(div2);
 		let div3 = document.createElement("div");
-		div3.setAttribute("class", "col-3");
+		div3.setAttribute("class", "col-3 pl-1");
 		let button = document.createElement("button");
 		button.setAttribute("type", "submit");
 		button.setAttribute("class", "btn btn-outline-success");
