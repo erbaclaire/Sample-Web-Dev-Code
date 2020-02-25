@@ -10,10 +10,19 @@ function formatNumber(num) {
 // render APOD background
 function renderAPOD() {
 	fetch("https://api.nasa.gov/planetary/apod?api_key=T9rcvcNgW9QZ5xvfe0repFLEiUOZBVAuQQna53lS").then(response => response.json()).then(data => {
-		document.body.style.backgroundImage = "url('" + data.url + "')";
-		document.body.style.backgroundRepeat = "no-repeat";
-		document.body.style.backgroundAttachment = "fixed";
-		document.body.style.backgroundSize = "100%";
+		if (data.media_type === "video") {
+			let vid = document.querySelector("#potVideo");
+			vid.innerHTML = `<iframe src='${data.url}' height="300" width="600"></iframe>`;
+			document.body.style.backgroundColor = "black";
+		}
+		if (data.media_type === "image") {
+			document.body.style.backgroundImage = "url('" + data.url + "')";
+			document.body.style.backgroundRepeat = "no-repeat";
+			document.body.style.backgroundAttachment = "fixed";
+			document.body.style.backgroundSize = "100%";
+		} 
+		let title = document.querySelector("#title");
+		title.innerHTML = data.title;
 		let explain = document.querySelector("#desc");
 		explain.innerHTML = data.explanation;
 	})
