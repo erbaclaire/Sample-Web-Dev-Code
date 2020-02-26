@@ -139,7 +139,7 @@ function renderMostHazerdous(property) {
 		newArray.forEach(asteroid => {
 		weeklyHazerdousHTML += `<div class="col-2">
 	  								<div class="card m-1">
-				  						<div class="card-body bg-light text-dark" style="height: 20rem;">
+				  						<div class="card-body bg-light text-dark" style="height: 23rem;">
 				    						<h5 class="card-title"><b>Asteroid: </b> ${asteroid.name}</h5>
 				    						<p class="card-title"><b>Close Pass Date: </b> ${asteroid.close_approach_data[0].close_approach_date_full}</p>
 				     						<p class="card-text"><b>Maximum Diameter: </b>${parseFloat(asteroid.estimated_diameter.miles.estimated_diameter_max).toFixed(2)} mi</p>
