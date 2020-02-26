@@ -41,7 +41,7 @@ function getURL() {
 	return base + "start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + apiKey;
 }
 
-function renderAsteroid(name, time, dangerous, maxDiameter, missDistance, velocity) {
+function renderAsteroid(name, time, dangerous, maxDiameter, missDistance, velocity, sentry) {
 	if (dangerous === true) {
 		var highlight = "text-dark bg-warning";
 	} else {
@@ -66,6 +66,7 @@ function renderAsteroid(name, time, dangerous, maxDiameter, missDistance, veloci
 			     		<p class="card-text"><b>Maximum Diameter:</b> <span class="` + highlight2 + `">${parseFloat(maxDiameter).toFixed(2)} mi</span></p>
 			     		<p class="card-text"><b>Relative Velocity:</b> <span class="` + highlight3 + `">${formatNumber(parseFloat(velocity).toFixed(2))} mi/hr</span></p>
 			    		<p class="card-text"><b>Miss Distance from Earth:</b> ${formatNumber(parseFloat(missDistance).toFixed(2))} mi</p>
+			    		<p class="card-text"><b>Sentry Object?:</b> ${sentry}</p>
 			  		</div>
 			  	</div>
 			</div>`
@@ -81,7 +82,7 @@ function renderAsteroids(date, asteroids){
 	})
 	asteroids.forEach(asteroid => {
 		if (asteroid.is_potentially_hazardous_asteroid === true) { weeklyHazerdous.push(asteroid) }
-	 	htmlCode += renderAsteroid(asteroid.name, asteroid.close_approach_data[0].close_approach_date_full, asteroid.is_potentially_hazardous_asteroid, asteroid.estimated_diameter.miles.estimated_diameter_max, asteroid.close_approach_data[0].miss_distance.miles, asteroid.close_approach_data[0].relative_velocity.miles_per_hour);
+	 	htmlCode += renderAsteroid(asteroid.name, asteroid.close_approach_data[0].close_approach_date_full, asteroid.is_potentially_hazardous_asteroid, asteroid.estimated_diameter.miles.estimated_diameter_max, asteroid.close_approach_data[0].miss_distance.miles, asteroid.close_approach_data[0].relative_velocity.miles_per_hour, asteroid.is_sentry_object);
 	})
 	return htmlCode += `</div>`;
 }
@@ -139,12 +140,13 @@ function renderMostHazerdous(property) {
 		newArray.forEach(asteroid => {
 		weeklyHazerdousHTML += `<div class="col-2">
 	  								<div class="card m-1">
-				  						<div class="card-body bg-light text-dark" style="height: 23rem;">
+				  						<div class="card-body bg-light text-dark" style="height: 25rem;">
 				    						<h5 class="card-title"><b>Asteroid: </b> ${asteroid.name}</h5>
 				    						<p class="card-title"><b>Close Pass Date: </b> ${asteroid.close_approach_data[0].close_approach_date_full}</p>
 				     						<p class="card-text"><b>Maximum Diameter: </b>${parseFloat(asteroid.estimated_diameter.miles.estimated_diameter_max).toFixed(2)} mi</p>
 				    						<p class="card-text"><b>Relative Velocity:</b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].relative_velocity.miles_per_hour).toFixed(2))} mi/hr</p>
 				    						<p class="card-text"><b>Miss Distance from Earth: </b> ${formatNumber(parseFloat(asteroid.close_approach_data[0].miss_distance.miles).toFixed(2))} mi</p>
+				    						<p class="card-text"><b>Sentry Object?: </b> ${asteroid.is_sentry_object}</p>
 				  						</div>
 				  					</div>
 								</div>`
