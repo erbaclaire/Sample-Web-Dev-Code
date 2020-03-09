@@ -10,3 +10,4 @@
 
 6. On mobile, "Initial Value" and "Profit" are removed from the table to make it more viewable. I understand these are not necessary, though, per the requirements, so it should not matter.
 
+7. Prices are rounded to two decimals in the summary table. If you calculate Total Value by doing Shares * Price per Share as Price per Share is presented in the summary table, you may be off by a couple of cents or dollars compared to what is shown since the Total Value, in the table, is calculated by using the non-rounded prices.
