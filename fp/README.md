@@ -1,6 +1,6 @@
-1. There is no need to start a server to use this app. The IEX Group API does not have any CORS that prohibit use from a local file. This app also does not use React. Therefore, simply open the html file to begin.
+1. There is no need to start a server to use this app. The IEX Group API does not have any CORS rules that prohibit use from a local file. This app also does not use React. Therefore, simply open the html file to begin.
 
-2. I understand that this project does not require the persistance of data for multiple users. Therefore, there is no sign in functionality. 
+2. I understand that this project does not require the persistence of data for multiple users. Therefore, there is no sign in functionality. 
 
 3. If you try to buy a stock that does not exist, the DOM will not update (the stock will not be purchased) even if there is a price displayed.
 
