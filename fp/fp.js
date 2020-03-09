@@ -49,7 +49,7 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 
 		// pps
 		let col3 = document.createElement("td");
-		let col3Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice).toFixed(2));
+		let col3Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice));
 		col3.appendChild(col3Text);
 		row.appendChild(col3);
 
@@ -136,7 +136,7 @@ async function logPrice(e) {
 	let pps = document.querySelector("#pps");
 	pps.value = data[symbolValue].quote.latestPrice
 }
-document.querySelector("#symbol").addEventListener("input", logPrice);
+document.querySelector("#symbol").addEventListener("change", logPrice);
 
 // when user enters the shares they want, fill in the total cost
 function logTotal(e) {
