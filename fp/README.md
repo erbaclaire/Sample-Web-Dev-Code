@@ -1,3 +1,5 @@
+PLEASE CLEAR YOUR LOCAL STORAGE BY DOING: localStorage.clear() in the Console.
+
 1. There is no need to start a server to use this app. The IEX Group API does not have any CORS rules that prohibit use from a local file. This app also does not use React. Therefore, simply open the html file to begin.
 
 2. I understand that this project does not require the persistence of data for multiple users. Therefore, there is no sign in functionality. 
