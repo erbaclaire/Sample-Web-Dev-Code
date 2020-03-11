@@ -1,4 +1,4 @@
-PLEASE CLEAR YOUR LOCAL STORAGE BY DOING: localStorage.clear() in the Console.
+PLEASE CLEAR YOUR LOCAL STORAGE BY DOING: localStorage.clear() in the Console. If you don't then local storage from another project being graded could end up in my portfolio and not look correct.
 
 1. There is no need to start a server to use this app. The IEX Group API does not have any CORS rules that prohibit use from a local file. This app also does not use React. Therefore, simply open the html file to begin.
 
@@ -12,4 +12,4 @@ PLEASE CLEAR YOUR LOCAL STORAGE BY DOING: localStorage.clear() in the Console.
 
 6. On mobile, "Initial Value" and "Profit" are removed from the table to make it more viewable. I understand these are not necessary, though, per the requirements, so it should not matter.
 
-7. Prices are rounded to two decimals in the summary table. If you calculate Total Value by doing Shares * Price per Share as Price per Share is presented in the summary table, you may be off by a couple of cents or dollars compared to what is shown since the Total Value, in the table, is calculated by using the non-rounded prices.
+
