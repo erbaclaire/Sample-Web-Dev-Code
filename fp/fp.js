@@ -3,6 +3,7 @@
 // 2. reloading page: https://www.w3schools.com/jsref/met_loc_reload.asp
 // 3. general HTML and javascript: https://developer.mozilla.org/en-US/ 
 // 4. local storage: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+// 5. worked and checked with Beth Pater
 
 // function to calculate portfolio value
 function calculatePortfolioValue() {
@@ -49,7 +50,7 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 
 		// pps
 		let col3 = document.createElement("td");
-		let col3Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice).toFixed(2));
+		let col3Text = document.createTextNode(parseFloat(data[symbolValue].quote.latestPrice));
 		col3.appendChild(col3Text);
 		row.appendChild(col3);
 
@@ -107,7 +108,6 @@ function renderPortfolio(symbolValue, sharesValue, initialValue) {
 		// call function to add event listener to rows of stock portfolio
 		sellForm("#sell" + symbolValue);
 
-		// calculate total if last
 		calculatePortfolioValue(); 
 	})
 }
@@ -118,8 +118,7 @@ function loadStockPortfolio() {
 	for (var i = 0; i < localStorage.length; i++) {
 	    var key = localStorage.key(i);
 	    var value = JSON.parse(localStorage.getItem(key));
-	    if (i === localStorage.length - 1) { var last = 1; } else { var last = 0; }
-	    renderPortfolio(key, value[0], value[1], last) 
+	    renderPortfolio(key, value[0], value[1]) 
 	}	
 }
 window.addEventListener("load", function() {
@@ -169,42 +168,12 @@ function buyStock(e) {
 	
 	// if some of stock is not already purchased, then add everything
 	if (alreadyInPortfolio === 0) {
-		renderPortfolio(symbolValue, sharesValue, initialValue, 1);
-
-		// update data that needs to be preserved - symbol, shares, and initial value - to local storage
 		var portfolioData = [sharesValue, initialValue];
 		localStorage.setItem(symbolValue, JSON.stringify(portfolioData));
-
-	} else { // If some of stock is already purchased, then update shares, total, initial, and profit/loss
-		// update shares
+	} else { // If some of stock is already purchased
 		const stock = document.querySelector("[id=" + CSS.escape(symbolValue) + "]");
-		const oldShares = stock.querySelector(":nth-child(2)").innerHTML;
-		stock.querySelector(":nth-child(2)").innerHTML = parseInt(parseFloat(oldShares) + parseFloat(sharesValue));
-		newShares = parseInt(stock.querySelector(":nth-child(2)").innerHTML)
-
-		// update total
-		const pps = stock.querySelector(":nth-child(3)").innerHTML;
-		stock.querySelector(":nth-child(4)").innerHTML = parseFloat(newShares*parseFloat(pps)).toFixed(2);
-		newTotal = stock.querySelector(":nth-child(4)").innerHTML
-
-		// update initial
-		const oldInitial = stock.querySelector(":nth-child(5)").innerHTML;
-		stock.querySelector(":nth-child(5)").innerHTML = parseFloat(parseFloat(oldInitial) + parseFloat(initialValue)).toFixed(2);
-		const newInitial = stock.querySelector(":nth-child(5)").innerHTML;
-
-		// update P&L
-		stock.querySelector(":nth-child(6)").innerHTML = parseFloat(parseFloat(newTotal) - parseFloat(newInitial)).toFixed(2);
-		if (parseFloat(newTotal) - parseFloat(newInitial) < 0) {
-			stock.querySelector(":nth-child(6)").style.color = "red"
-		} else {
-			stock.querySelector(":nth-child(6)").style.color = "green"
-		}
-
-		// update amount you can sell
-		let sell = stock.querySelector(":nth-child(7) form div div input");
-		sell.max = newShares;
-
-		// update data that needs to be preserved - symbol, shares, and initial value - to local storage
+		newShares = parseInt(stock.querySelector(":nth-child(2)").innerHTML) + parseInt(sharesValue);
+		const newInitial = parseFloat(stock.querySelector(":nth-child(5)").innerHTML) + parseFloat(initialValue);
 		var portfolioData = [newShares, newInitial];
 		localStorage.setItem(symbolValue, JSON.stringify(portfolioData));
 	}
