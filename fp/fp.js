@@ -129,6 +129,7 @@ window.addEventListener("load", function() {
 async function logPrice(e) {
 	e.preventDefault();
 	console.log(e);
+	document.querySelector("#shares").value = "";
   	const symbolValue = document.querySelector("#symbol").value;
 	let http_response = await fetch("https://cloud.iexapis.com/stable/stock/market/batch?symbols=" + symbolValue + "&types=quote&token=sk_0b2fe21aa32342e7b0a1806dff4beaf6");
 	let data = await http_response.json();
