@@ -1,2 +1,6 @@
-# mpcs52553
-Winter 2020 - Web Development - MPCS
+# Sample-Web-Dev-Code
+
+Assignments for a Master's class. 
+
+All files can be run locally.
+
